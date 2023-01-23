@@ -1,14 +1,17 @@
 #!/usr/bin/python3
-"""
-fetch https://intranet.hbtn.io/status; display response
-"""
+'''
+Makes a request and prints information about the body of the response
+'''
 
-import urllib.request
+from urllib.request import urlopen
 
-if __name__ == "__main__":
-    with urllib.request.urlopen('https://intranet.hbtn.io/status') as response:
-        html = response.read()
-        print('Body response:')
-        print("\t- type: {}".format(type(html)))
-        print("\t- content: {}".format(html))
-        print("\t- utf8 content: {}".format(html.decode('utf-8')))
+URL = 'https://intranet.hbtn.io/status'
+
+if __name__ == '__main__':
+
+    with urlopen(URL) as r:
+        body = r.read()
+        print("Body response:")
+        print("\t- type:", type(body))
+        print("\t- content:", body)
+        print("\t- utf8 content:", body.decode())
